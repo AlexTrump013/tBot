@@ -1,6 +1,11 @@
- <?php
+<?php
 
-//  $data = json_decode(file_get_contents('php://input'),TRUE);
-//  file_put_contents('text.txt', '$data: '.print_r($data, 1)."\n", FILE_APPEND);
+addEventListener("fetch", function ($event) {
+    $event->respondWith(handleRequest($event->request));
+});
 
-echo '123';
+function handleRequest($request) {
+    return new Response("PHP Worker hello world", [
+        "headers" => [ "content-type" => "text/plain" ]
+    ]);
+}
